@@ -9,11 +9,13 @@ const app = express();
 const socket = require("socket.io");
 require("dotenv").config();
 
+app.use(cors({
+  origin: '*',
+  credentials: true,
+}));
 app.use(cookieParser());
 app.use(express.json());
-app.use(cors({
-  origin: '*'
-}));
+
 
 db()
 
@@ -26,7 +28,8 @@ const server = app.listen(process.env.PORT || 3003, function () {
 });
 const io = socket(server, {
   cors: {
-    origin: '*'
+    origin: '*',
+    credentials: true,
   },
 });
 
