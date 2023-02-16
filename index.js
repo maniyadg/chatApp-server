@@ -23,9 +23,9 @@ db()
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-const server = app.listen(process.env.PORT, () =>
-  console.log(`Server started on ${process.env.PORT}`)
-);
+const server = app.listen(process.env.PORT || 3003, function () {
+  console.log("Server Listening!");
+});
 const io = socket(server, {
   cors: {
     origin: 'https://master--fastidious-daffodil-71caa8.netlify.app/',
