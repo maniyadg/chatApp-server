@@ -1,7 +1,8 @@
 const express = require("express");
+const serverless = require ('serverless-http')
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
-const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const db = require('./db/connection')
 const authRoutes = require("./routes/auth.routes");
 const messageRoutes = require("./routes/message.routes");
@@ -15,7 +16,8 @@ app.use(cors({
 }));
 app.use(cookieParser());
 app.use(express.json());
-
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(bodyParser.json())
 
 db()
 
@@ -23,9 +25,13 @@ db()
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-const server = app.listen(process.env.PORT || 3003, function () {
-  console.log("Server Listening!");
-});
+const server = app
+// const server = app.listen(process.env.PORT || 3003, function () {
+//   console.log("Server Listening!");
+// });
+
+module.exports.handler = serverless(app)
+
 const io = socket(server, {
   cors: {
     origin: '*',
