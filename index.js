@@ -11,7 +11,7 @@ const socket = require("socket.io");
 require("dotenv").config();
 
 app.use(cors({
-  origin: '*',
+  origin: 'http://localhost:3000',
   credentials: true,
   methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
   allowedHeaders: ['Content-Type'],
@@ -35,7 +35,7 @@ const server = app.listen(process.env.PORT || 3003, function () {
 
 const io = socket(server, {
   cors: {
-    origin: '*',
+    origin: 'http://localhost:3000',
     credentials: true,
   },
 });
