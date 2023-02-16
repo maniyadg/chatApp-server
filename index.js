@@ -12,7 +12,7 @@ require("dotenv").config();
 app.use(cookieParser());
 app.use(express.json());
 app.use(cors({
-  origin: 'https://master--fastidious-daffodil-71caa8.netlify.app'
+  origin: '*'
 }));
 
 db()
@@ -26,7 +26,7 @@ const server = app.listen(process.env.PORT || 3003, function () {
 });
 const io = socket(server, {
   cors: {
-    origin: 'https://master--fastidious-daffodil-71caa8.netlify.app'
+    origin: '*'
   },
 });
 
