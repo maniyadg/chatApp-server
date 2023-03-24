@@ -18,7 +18,7 @@ module.exports.login = async (req, res, next) => {
             const token = await jwt.sign({_id: existingUser._id}, JWT_SECRET); //Encrytion
             res.cookie('accessToken', token, {expire: new Date() + 86400000})
 
-            return res.status(201).send({message: 'User signed-in successfully.' , status:'true'})
+            return res.status(201).send({message: 'User signed-in successfully.' , status:'true'} , token)
         }
 
         return res.status(401).send({message: 'Invalid credentials'})
