@@ -10,15 +10,14 @@ const app = express();
 const socket = require("socket.io");
 require("dotenv").config();
 
+
+app.use(express.json());
 app.use(cors({
-  origin: 'https://master--prismatic-malasada-c44b26.netlify.app',
-  credentials: true,
-  methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
-  allowedHeaders: ['Content-Type'],
-  exposedHeaders: ['Content-Type']
+  origin: 'http://localhost:3000',
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200
 }));
 app.use(cookieParser());
-app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
@@ -35,7 +34,7 @@ const server = app.listen(process.env.PORT || 3003, function () {
 
 const io = socket(server, {
   cors: {
-    origin: 'https://master--prismatic-malasada-c44b26.netlify.app',
+    origin: 'http://localhost:3000/',
     credentials: true,
   },
 });

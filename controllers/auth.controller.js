@@ -1,5 +1,6 @@
 const User = require("../models/users.models");
 const bcrypt = require("bcrypt");
+const localStorage = require('localStorage')
 const dotenv = require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.SECRET_KEY;
@@ -17,6 +18,7 @@ module.exports.login = async (req, res, next) => {
         if(isValidUser){
             const token = await jwt.sign({_id: existingUser._id}, JWT_SECRET); //Encrytion
             res.cookie('accessToken', token, {expire: new Date() + 86400000})
+            localStorage.setItem('accessToken', token);
 
             return res.status(201).send({message: 'User signed-in successfully.' , status:'true' , token})
         }
