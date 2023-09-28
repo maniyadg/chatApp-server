@@ -3,6 +3,7 @@ const localStorage = require('localStorage')
 
 exports.isAuth = async (req, res, next) => {
     const  token  = localStorage.getItem("accessToken")
+    console.log(token)
     if(token){
         let data = await jwt.verify(token, process.env.SECRET_KEY);
         req.id = data._id;
