@@ -13,7 +13,7 @@ require("dotenv").config();
 
 app.use(express.json());
 app.use(cors({
-  origin: '*',
+  origin: 'https://master--prismatic-malasada-c44b26.netlify.app/',
   credentials: true,
   methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
   allowedHeaders: ['Content-Type'],
@@ -36,7 +36,7 @@ const server = app.listen(process.env.PORT || 3003, function () {
 
 const io = socket(server, {
   cors: {
-    origin: 'http://localhost:3000/',
+    origin: 'https://master--prismatic-malasada-c44b26.netlify.app/',
     credentials: true,
   },
 });
