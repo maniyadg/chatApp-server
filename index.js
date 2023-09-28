@@ -13,9 +13,11 @@ require("dotenv").config();
 
 app.use(express.json());
 app.use(cors({
-  origin: 'https://master--prismatic-malasada-c44b26.netlify.app/',
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200
+  origin: '*',
+  credentials: true,
+  methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
+  allowedHeaders: ['Content-Type'],
+  exposedHeaders: ['Content-Type']
 }));
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:true}))
