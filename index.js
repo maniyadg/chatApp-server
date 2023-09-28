@@ -13,7 +13,7 @@ require("dotenv").config();
 
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://master--prismatic-malasada-c44b26.netlify.app/',
   credentials:true,            //access-control-allow-credentials:true
   optionSuccessStatus:200
 }));
