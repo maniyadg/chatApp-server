@@ -10,6 +10,8 @@ const app = express();
 const socket = require("socket.io");
 require("dotenv").config();
 
+
+app.use(express.json());
 app.use(cors({
   origin: 'https://master--prismatic-malasada-c44b26.netlify.app',
   credentials: true,
@@ -18,7 +20,6 @@ app.use(cors({
   exposedHeaders: ['Content-Type']
 }));
 app.use(cookieParser());
-app.use(express.json());
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
