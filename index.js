@@ -13,7 +13,7 @@ require("dotenv").config();
 
 app.use(express.json());
 app.use(cors({
-  origin: 'https://fastidious-daffodil-71caa8.netlify.app/',
+  origin: 'https://prismatic-malasada-c44b26.netlify.app',
   credentials: true,
   methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
   allowedHeaders: ['Content-Type'],
@@ -36,7 +36,7 @@ const server = app.listen(process.env.PORT || 3003, function () {
 
 const io = socket(server, {
   cors: {
-    origin: 'https://fastidious-daffodil-71caa8.netlify.app/',
+    origin: 'https://prismatic-malasada-c44b26.netlify.app',
     credentials: true,
   },
 });
