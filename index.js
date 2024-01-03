@@ -36,7 +36,7 @@ const server = app.listen(process.env.PORT || 3003, function () {
 
 const io = socket(server, {
   cors: {
-    origin: 'https://master--prismatic-malasada-c44b26.netlify.app/',
+    origin: 'https://master--prismatic-malasada-c44b26.netlify.app',
     credentials: true,
   },
 });
